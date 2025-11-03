@@ -24,6 +24,24 @@ namespace UnityVolumeRendering
                         wnd.Show();
                         break;
                     }
+
+
+                case DatasetType.Nifti:
+                    {
+                        NiftiImporter importer = new NiftiImporter(filePath);
+                        VolumeDataset dataset = importer.ImportNiftiDataset(filePath);
+
+                        if (dataset != null)
+                        {
+                            VolumeRenderedObject obj = VolumeObjectFactory.CreateObject(dataset);
+                        }
+                        else
+                        {
+                            Debug.LogError("Failed to import datset");
+                        }
+                        break;
+                    }
+
                 case DatasetType.DICOM:
                     {
                         string directoryPath = new FileInfo(filePath).Directory.FullName;

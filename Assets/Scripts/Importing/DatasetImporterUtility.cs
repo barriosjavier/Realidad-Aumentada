@@ -10,7 +10,8 @@ namespace UnityVolumeRendering
         Unknown,
         Raw,
         DICOM,
-        PARCHG
+        PARCHG,
+        Nifti
     }
 
     public class DatasetImporterUtility
@@ -28,9 +29,13 @@ namespace UnityVolumeRendering
                 datasetType = DatasetType.PARCHG;
             }
 
+            else if(extension == ".nii")
+            {
+                datasetType = DatasetType.Nifti;
+            }
             else if (extension == ".dat" || extension == ".raw" || extension == ".vol")
                 datasetType = DatasetType.Raw;
-            
+
             else if (extension == ".ini")
             {
                 filePath = filePath.Substring(0, filePath.LastIndexOf("."));
@@ -41,7 +46,7 @@ namespace UnityVolumeRendering
                 datasetType = DatasetType.DICOM;
             }
 
-            else 
+            else
             {
                 datasetType = DatasetType.Unknown;
             }

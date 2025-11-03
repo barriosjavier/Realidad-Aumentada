@@ -22,6 +22,20 @@ namespace UnityVolumeRendering
                 Debug.LogError("File doesn't exist: " + file);
             }
         }
+        
+        [MenuItem("Volume Rendering/Load dataset/Load Nifti dataset")]
+        static void ShowNiftiDatasetImporter()
+        {
+            string file = EditorUtility.OpenFilePanel("Select a dataset to load", "DataFiles", "");
+            if (File.Exists(file))
+            {
+                EditorDatasetImporter.ImportDataset(file);
+            }
+            else
+            {
+                Debug.LogError("File doesn't exist: " + file);
+            }
+        }
 
         [MenuItem("Volume Rendering/Load dataset/Load PARCHG dataset")]
         static void ShowParDatasetImporter()
